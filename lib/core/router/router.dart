@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:gorouterdeeplink/presentation/screen/main_screen.dart';
+import 'package:gorouterdeeplink/core/navigation/main_screen.dart';
+import 'package:gorouterdeeplink/presentation/chat/view/chat_screen.dart';
+import 'package:gorouterdeeplink/presentation/home/view/home_screen.dart';
+import 'package:gorouterdeeplink/presentation/message/view/message_screen.dart';
 
 final routerProvider = Provider((ref) {
   return GoRouter(
@@ -23,7 +26,7 @@ final routerProvider = Provider((ref) {
       ),
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) {
-          return MainScreen(
+          return NavScreen(
             currentPageIndex: navigationShell.currentIndex,
             onDestinationSelected: (index) {
               navigationShell.goBranch(
@@ -39,9 +42,7 @@ final routerProvider = Provider((ref) {
             routes: [
               GoRoute(
                 path: '/home',
-                builder: (context, state) {
-                  return Center(child: Text('home'));
-                },
+                builder: (context, state) => const HomeScreen(),
               ),
             ],
           ),
@@ -49,9 +50,7 @@ final routerProvider = Provider((ref) {
             routes: [
               GoRoute(
                 path: '/chat',
-                builder: (context, state) {
-                  return Center(child: Text('chat'));
-                },
+                builder: (context, state) => const ChatScreen(),
               ),
             ],
           ),
@@ -79,9 +78,7 @@ final routerProvider = Provider((ref) {
             routes: [
               GoRoute(
                 path: '/message',
-                builder: (context, state) {
-                  return Center(child: Text('message'));
-                },
+                builder: (context, state) => const MessageScreen(),
               ),
             ],
           ),

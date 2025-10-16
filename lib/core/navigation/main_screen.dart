@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class MainScreen extends StatelessWidget {
+class NavScreen extends StatelessWidget {
   final Widget child;
   final int currentPageIndex;
   final ValueChanged<int> onDestinationSelected;
-  const MainScreen({
+  const NavScreen({
     super.key,
     required this.child,
     required this.currentPageIndex,
