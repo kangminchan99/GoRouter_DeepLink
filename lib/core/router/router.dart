@@ -2,28 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:gorouterdeeplink/core/navigation/main_screen.dart';
+import 'package:gorouterdeeplink/presentation/authentication/view/login_screen.dart';
+import 'package:gorouterdeeplink/presentation/authentication/view/sign_up_screen.dart';
 import 'package:gorouterdeeplink/presentation/chat/view/chat_screen.dart';
 import 'package:gorouterdeeplink/presentation/home/view/home_screen.dart';
 import 'package:gorouterdeeplink/presentation/message/view/message_screen.dart';
 
 final routerProvider = Provider((ref) {
   return GoRouter(
+    initialLocation: '/login',
     routes: [
       GoRoute(
-        path: '/',
-        builder: (context, state) {
-          return Scaffold(
-            body: Center(
-              child: ElevatedButton(
-                onPressed: () {
-                  context.go('/home');
-                },
-                child: Text('입장'),
-              ),
-            ),
-          );
-        },
+        path: '/sign_up',
+        builder: (context, state) => const SignUpScreen(),
       ),
+      GoRoute(path: '/login', builder: (context, state) => const LoginScreen()),
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) {
           return NavScreen(
